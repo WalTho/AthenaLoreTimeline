@@ -99,18 +99,20 @@
                 border: var(--cardColor) solid 1px;
                 margin-bottom: 80px;
                 border-radius: 10px;
-                filter: drop-shadow(4px 4px 25px rgba(51, 51, 51, 0.192));
+                box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.5);
                 position: relative;
                 z-index: 99;
                 transition: all 0.3s ease-in-out;
                 user-select: none;
             }
             .container ul li:hover{
-                filter: drop-shadow(4px 4px 25px rgba(130, 130, 130, 0.192)) brightness(1.1);
+                box-shadow: 4px 4px 25px rgba(255, 255, 255, 0.2);
                 border: var(--titleCardColor) solid 1px;
             }
             .container ul li:hover .circle{
                 filter: brightness(1.5);
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+                
             }
             .container ul li:nth-child(odd){
                 float: left;
