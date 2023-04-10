@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <title>Athena - Frise Chronologique du Lore</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Rancho&family=Water+Brush&display=swap');
+
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                --backgroundColor: rgb(20, 28, 38);
+                --cardColor: #25292D;
+                --titleCardColor: #BBC3C9;
+                --titleColor: white;
+                transition: all 0.3s ease-in-out;
+            }
+            body{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                display: flex;
+                height: fit-content;
+                background-color: var(--backgroundColor);
+            }
+            .main{
+                width: 100%;
+                height: fit-content;
+                font-family: poppins;
+                padding: 50px 0;
+                display: grid;
+                place-items: center;
+                position: relative;
+            }
+            .main .heading{
+                width: 100%;
+                text-align: center;
+                font-size: 27px;
+                font-weight: 500;
+                color: rgb(58, 161, 184);
+                position: relative;
+                margin-bottom: 80px;
+                padding-bottom: 30px;
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+            .heading::after{
+                content: " ";
+                position: absolute;
+                width: 50%;
+                height: 4px;
+                left: 50%;
+                bottom: -5px;
+                background-image: linear-gradient(90deg, hsla(191, 52%, 45%, 1) 0%, hsla(237, 44%, 49%, 1) 100%);
+                transform: translateX(-50%);
+            }
+
+            /* Container Css Start  */
+
+            .container{
+                width: 70%;
+                height: auto;
+                position: relative;
+            }
+            .container ul::after{
+                position: absolute;
+                content: '';
+                width: 2px;
+                height: 100%;
+                left: 50%;
+                background-image: linear-gradient(90deg, hsla(191, 52%, 45%, 1) 0%, hsla(237, 44%, 49%, 1) 100%);
+            }
+            .container ul{
+                list-style: none;
+            }
+            .container ul li{
+                width: 50%;
+                height: auto;
+                padding: 45px 45px 25px;
+                background-color: var(--cardColor);
+                border: var(--cardColor) solid 1px;
+                margin-bottom: 80px;
+                border-radius: 10px;
+                filter: drop-shadow(4px 4px 25px rgba(51, 51, 51, 0.192));
+                position: relative;
+                z-index: 99;
+                transition: all 0.3s ease-in-out;
+                user-select: none;
+            }
+            .container ul li:hover{
+                filter: drop-shadow(4px 4px 25px rgba(130, 130, 130, 0.192)) brightness(1.1);
+                border: var(--titleCardColor) solid 1px;
+            }
+            .container ul li:hover .circle{
+                filter: brightness(1.5);
+            }
+            .container ul li:nth-child(odd){
+                float: left;
+                clear: right;
+                transform: translateX(-30px);
+            }
+            .container ul li:nth-child(odd) .date{
+                right: -1px;
+            }
+            .container ul li:nth-child(even) .date{
+                left: -1px;
+            }
+            .container ul li:nth-child(even){
+                float: right;
+                clear: left;
+                transform: translateX(30px);
+            }
+            .container ul li:nth-child(4){
+                margin-bottom: 80px;
+            }
+            .container ul li .title{
+                font-size: 20px;
+                font-weight: 500;
+                color: var(--titleCardColor);
+            }
+            ul li p{
+                font-size: 15px;
+                color: var(--titleCardColor);
+                margin: 25px 0 15px;
+                line-height: 23px;
+            }
+            ul li a{
+                font-size: 15px;
+                color: hsla(191, 52%, 45%, 1);
+                text-decoration: underline;
+                text-underline-offset: 4px;
+            }
+            ul li .date{
+                position: absolute;
+                top: -18px;
+                width: 135px;
+                height: 35px;
+                border-radius: 5px;
+                color: #fff;
+                background-image: linear-gradient(90deg, hsla(191, 52%, 45%, 1) 0%, hsla(237, 44%, 49%, 1) 100%);
+                display: grid;
+                place-items: center;
+                font-size: 14px;
+            }
+            .container ul li .circle{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: hsla(191, 52%, 45%, 1);
+                position: absolute;
+                top: 0;
+            }
+            .container ul li .circle::after{
+                content: '';
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                background-color: rgb(46, 125, 143);
+                border-radius: 50%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .container ul li:nth-child(odd) .circle{
+                right: -30px;
+                transform: translate(50%, -50%);
+            }
+            .container ul li:nth-child(even) .circle{
+                left: -30px;
+                transform: translate(-50%, -50%);
+            }
+
+            /*  Media Query Started  */
+
+            @media screen and (max-width:1224px){
+                .container{
+                    width: 85%;
+                }
+            }
+
+            @media screen and (max-width:993px){
+                .container{
+                    width: 80%;
+                    transform: translateX(15px);
+                }
+                .container ul::after{
+                    left: -30px;
+                }
+                .container ul li{
+                    width: 100%;
+                    float: none;
+                    clear: none;
+                    margin-bottom: 80px;
+                }
+                .container ul li:nth-child(odd){
+                    text-align: left;
+                    transform: translateX(0);
+                }
+                .container ul li:nth-child(odd) .date{
+                    left: -1px;
+                }
+                .container ul li:nth-child(odd) .circle{
+                    left: -30px;
+                    transform: translate(-50%, -50%);
+                }
+                .container ul li:nth-child(even){
+                    transform: translateX(0);
+                }
+            }
+            .search-container{
+                background: #fff;
+                height: 35px;
+                border-radius: 30px;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.8s;
+                box-shadow:
+                            inset -4px -4px 6px 0 rgba(255,255,255,.2),
+                            inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+                            margin-bottom: 100px;
+            }
+
+            .search-container .search-input{
+                background: transparent;
+                border: none;
+                outline:none;
+                width: 200px;
+                font-weight: 500;
+                font-size: 16px;
+
+            }
+
+            .search-container .search-btn .fas{
+                color: hsla(191, 52%, 45%, 1);
+                cursor: pointer;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="main">
+            <h3 class="heading">Frise Chronologique du Lore d'Athena</h3>
+            <div class="search-container" onsubmit="search()">
+                <input id="searchbar" onblur="search()" type="text" placeholder="Rechercher.." class="search-input">
+                <span class="search-btn" onclick="search()">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+            <div class="container">
+                <ul>
+                    <li>
+                        <h3 class="title">L'échec de la colonisation de Mars</h3>
+                        <p>2029 suite à l'échec cuisant de la colonisation de Mars et de la ceinture d'astéroïdes. Malgré les périls, les ingénieurs doivent s'unir pour élaborer une solution viable garantissant l'avenir de l'humanité.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2029</span>
+                    </li>
+                    <li>
+                        <h3 class="title">La colonisation de Mars</h3>
+                        <p>2079 Port Argos, le premier site de recherche et développement d'Argonaut Industries sur Mars, est devenu le principal centre d'ingénierie du système solaire pour concevoir, tester et fabriquer des véhicules de qualité supérieure.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2079</span>
+                    </li>
+                    <li>
+                        <h3 class="title">Enquête sur la faction R.O.S</h3>
+                        <p>2084 la Coopérative Solidaire, entame son enquête sur la faction R.O.S. et ses activités douteuses. La Terre et Argonaut Industries, créant une alliance fragile pour lutter contre la menace grandissante que représente la faction R.O.S</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2084</span>
+                    </li>
+                    <li>
+                        <h3 class="title">La mission de la Nazva</h3>
+                        <p>2150, la race humaine était en danger en raison de guerres multiples et de la chute des gouvernements de chaque pays. Pour tenter de sauver la race humaine La Nazva a lancé l'Initiative Horus Expedition (IHE). Les opérations de l'IHE ont commencé avec l'envoi de vaisseaux pour coloniser Titan.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2150</span>
+                    </li>
+                    <li>
+                        <h3 class="title">La découverte de l'anomalie électromagnétique</h3>
+                        <p>2162, une anomalie électromagnétique perturba le réseau satellite mondial. La Nazva a utilisé ses ressources pour aider l'IHE à enquêter sur l'origine de l'anomalie.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2162</span>
+                    </li>
+                    <li>
+                        <h3 class="title">Premier Contact</h3>
+                        <p>2163 le premier contact avec une forme de vie potentiellement extraterrestre. Les humains ont découvert un anneau géant menant vers d’autres mondes.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2163</span>
+                    </li>
+                    <li>
+                        <h3 class="title">Les multiples expéditions et la reconstruction politique</h3>
+                        <p>2166, de multiples expéditions ont été lancées, permettant à l'humanité de voyager à travers les étoiles. Les guerres ont pris fin, et le corps politique a été entièrement reconstruit.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2166</span>
+                    </li>
+                    <li>
+                        <h3 class="title">La naissance d'une nouvelle civilisation</h3>
+                        <p>2176, Au fil des années, les groupes de colons se sont développés pour former des sociétés entières, donnant naissance à une nouvelle civilisation.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2176</span>
+                    </li>
+                    <li>
+                        <h3 class="title">L'arrivée de l'Empire</h3>
+                        <p>2182 cette période de transition a été marquée par plusieurs guerres internes, chaque groupe cherchant à obtenir plus de pouvoir et de ressources. Au fil du temps, un empire d'humains a émergé et a finalement pris le pouvoir sur les autres groupes.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2182</span>
+                    </li>
+                    <li>
+                        <h3 class="title">La montée en puissance de l'Empire</h3>
+                        <p>2194, l'empire ne contrôle pas tous les systèmes reliant les différents portails, ils ont exercé un certain pouvoir sur tous les autres groupes. Leur territoire s'étend principalement dans le cadran alpha.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2194</span>
+                    </li>
+                    <li>
+                        <h3 class="title">La désactivation des portails</h3>
+                        <p>2232, les portails se sont éteints, laissant toutes les colonies isolées du reste du monde. Les humains des colonies se sont retrouvés bloqués.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2232</span>
+                    </li>
+                    <li>
+                        <h3 class="title">Les conséquences du dysfonctionnement des portails</h3>
+                        <p>2234, Lors du dysfonctionnement des portails, la plupart d'entre eux ont été désactivés, ce qui a entraîné une perte d'influence pour l'empire. Cependant, ils ont su s'adapter et ont développé une technologie leur permettant de se déplacer sans les portails. Grâce aux années passées à étudier les édifices extraterrestres.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2234</span>
+                    </li>
+                    <li>
+                        <h3 class="title">Nouvelles perturbations</h3>
+                        <p>2247, un nouveau signal a réactivé les portails partiellement, créant une instabilité dans certains systèmes.</p>
+                        <!-- <a href="#">Read More ></a> -->
+                        <span class="circle"></span>
+                        <span class="date">2247 ( Présent )</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            function search(event) {
+                let list = document.getElementsByTagName('li');
+                let input = document.getElementById('searchbar').value
+                input=input.toLowerCase();
+                for (i = 0; i < list.length; i++) {
+                    if (!list[i].innerHTML.toLowerCase().includes(input)) {
+                        list[i].style.display="none";
+                    }
+                    else {
+                        list[i].style.display="list-item";
+                    }
+                }
+            }
+            let searchbar = document.getElementById('searchbar');
+            searchbar.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    search();
+                }
+            });
+        </script>
+    </body>
+</html>
+
+
